@@ -8,6 +8,9 @@ public class Player_Control : MonoBehaviour
 
     private Vector2 MoveDir;
 
+    public KeyCode Keyboard_LEFT = KeyCode.A;
+    public KeyCode Keyboard_RIGHT = KeyCode.D;
+
     private Rigidbody2D mRigidbody2D;
     private Animator mAnimator;
     private SpriteRenderer mSpriteRenderer;
@@ -23,21 +26,22 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(Keyboard_LEFT))
         {
             MoveDir.x = -MoveSpeed;
             mAnimator.SetFloat("Animator_MoveSpeed", 1);
             mSpriteRenderer.flipX = true;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(Keyboard_RIGHT))
         {
             MoveDir.x = MoveSpeed;
             mAnimator.SetFloat("Animator_MoveSpeed", 1);
             mSpriteRenderer.flipX = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(Keyboard_LEFT) ||
+            Input.GetKeyUp(Keyboard_RIGHT)  )
         {
             MoveDir = Vector2.zero;
             mAnimator.SetFloat("Animator_MoveSpeed", 0);
