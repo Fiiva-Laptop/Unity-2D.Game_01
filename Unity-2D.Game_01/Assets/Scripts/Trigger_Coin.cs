@@ -23,6 +23,8 @@ public class Trigger_Coin : MonoBehaviour
         if (collision.name == "Player")
         {
             Instantiate(soundObject, transform.position, Quaternion.identity);
+            GameManager.instance.GetCoin(1);
+
             Destroy(gameObject);
         }
     }
