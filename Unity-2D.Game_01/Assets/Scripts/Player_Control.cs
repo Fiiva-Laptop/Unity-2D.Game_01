@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player_Control : MonoBehaviour
 {
-    public float MoveSpeed = 5.0f;
+    public static float MoveSpeed = 5.0f;
     public float JumpForce = 450.0f;
     public bool isGrounded = false;
 
@@ -27,6 +27,9 @@ public class Player_Control : MonoBehaviour
         mRigidbody2D = GetComponent<Rigidbody2D>();
         mAnimator = GetComponent<Animator>();
         mSpriteRenderer = GetComponent<SpriteRenderer>();
+        
+        /*Camera control*/
+        Camera.main.GetComponent<Camera_Control>().SetTarget(gameObject.transform);
     }
 
     // Update is called once per frame
